@@ -1,0 +1,41 @@
+{
+	"substitutions": {
+		"__all__": {
+			"parts": {
+				"1": "IA",
+				"2": "IB",
+				"3": "IIA",
+				"4": "IIB"
+			},
+			"event_types": {
+				"C": "class",
+				"L": "lecture"
+			}
+		},
+		"1": {
+			"papers": {
+				"CW": "Coursework",
+				"P1": "Paper 1 — Mechanical engineering",
+				"P2": "Paper 2 — Structures & materials",
+				"P3": "Paper 3 — Electrical & information engineering",
+				"P4": "Paper 4 — Mathematical methods",
+				"PX": "Other"
+			}
+		},
+		"2": {
+			"papers": {
+				"CW": "Coursework",
+				"P1": "Paper 1 — Mechanics",
+				"P2": "Paper 2 — Structures",
+				"P3": "Paper 3 — Materials",
+				"P4": "Paper 4 — Thermofluid mechanics",
+				"P5": "Paper 5 — Electrical engineering",
+				"P6": "Paper 6 — Information engineering",
+				"P7": "Paper 7 — Mathematical methods",
+				"P8": "Paper 8 — Selected topics"
+			}
+		},
+		"3": {},
+		"4": {}
+	}
+}

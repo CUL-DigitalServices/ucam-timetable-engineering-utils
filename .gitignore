@@ -1,0 +1,5 @@
+data/
+*.xml
+*.ics
+*.py[a-z]
+.DS_Store

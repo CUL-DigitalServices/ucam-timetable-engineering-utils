@@ -1,0 +1,5 @@
+docopt==0.6.2
+icalendar==3.7
+ipython==2.1.0
+lxml==3.3.5
+pytz==2014.4
