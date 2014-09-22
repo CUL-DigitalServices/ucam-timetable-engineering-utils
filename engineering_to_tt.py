@@ -8,6 +8,7 @@ Options:
   -t=<tripos_name>    Set the tripos name to use in the output.
                       Default: engineering
   -s=<file>           Specify a file to load substitutions from
+  -e=<file>           Specify a file to load exclusions from
 
 Substitutions:
   The names used in the iCalendar feed are not necessarily what we wish to
@@ -62,6 +63,25 @@ Substitutions:
   substitutions under the part's name. Global substitutions go in the "__all__"
   section.
 
+Exclusions:
+
+  When an event is generated we check whether its values correspond to any of
+  the exclusions specified. If it does it won't be included in the generated
+  XML. Exclusions are specified through a json file by specifying a list of
+  objects with values with which events need to correspond in order to be
+  exluded.
+
+  Example structure:
+
+    {
+        "exclusions": [
+            {
+                "paper": "Coursework",
+                "event_type": "class"
+            }
+        ]
+    }
+
 """
 from __future__ import unicode_literals
 
@@ -86,6 +106,10 @@ EXTERNAL_ID_SEED = b'\x07\xb8\xb7\xbc\xf1\xf1\xfc\x06;\xc2\x1bC<,\x14L'
 
 
 class SubstitutionFormatException(Exception):
+    pass
+
+
+class ExcluderFormatException(Exception):
     pass
 
 
@@ -125,6 +149,49 @@ class Substitutor(object):
         # desired.
 
         return Substitutor(json_object["substitutions"])
+
+
+class Excludor(object):
+    def __init__(self, exclusions):
+        self.exclusions = exclusions
+        pass
+
+    def isExcluded(self, toCheck):
+        for exclusion in self.exclusions:
+            if all([
+                getattr(toCheck, exclusion_key, None)
+                    == exclusion[exclusion_key]
+                    for exclusion_key in exclusion]):
+                return True
+        return False
+
+    @staticmethod
+    def from_json_file(filename):
+        try:
+            with open(filename) as f:
+                return Excludor.from_json(json.load(f))
+        except ValueError as e:
+            raise ExcluderFormatException(
+                "Unable to parse substitution file as JSON: {}".format(e))
+
+    @staticmethod
+    def from_json(json_object):
+        if not isinstance(json_object, dict):
+            raise ExcluderFormatException(
+                "Top level value was not an object.")
+        if "exclusions" not in json_object:
+            raise ExcluderFormatException(
+                "Top level object has no \"exclusions\" key.")
+
+        return Excludor(json_object["exclusions"])
+
+
+class NullExcludor(object):
+    def __init__(self):
+        pass
+
+    def isExcluded(self, event):
+        return False
 
 
 class NullSubstitutor(object):
@@ -326,10 +393,17 @@ def main():
     else:
         substitutor = NullSubstitutor()
 
+    exclusions_file = args["-e"]
+    if exclusions_file:
+        excludor = Excludor.from_json_file(exclusions_file)
+    else:
+        excludor = NullExcludor()
+
     events = (
         event
         for filename in args["<ical_file>"]
         for event in parse_engineering_ical_file(filename, substitutor)
+        if not excludor.isExcluded(event)
     )
 
     xml = build_timetable_xml(tripos_name, events)

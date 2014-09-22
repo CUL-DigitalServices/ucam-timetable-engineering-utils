@@ -1,0 +1,7 @@
+{
+    "exclusions": [
+        {
+            "event_type": "class"
+        }
+    ]
+}

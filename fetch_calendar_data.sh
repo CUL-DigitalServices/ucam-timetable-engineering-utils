@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 mkdir -p $DIR/data/IA $DIR/data/IB $DIR/data/IIA $DIR/data/IIB
 
-BASE_URL="http://td.eng.cam.ac.uk/tod/public/view_ical.php?yearval=2013_14"
+BASE_URL="http://td.eng.cam.ac.uk/tod/public/view_ical.php?yearval=2014_15"
 
 curl "$BASE_URL&term=M&course=IA" > $DIR/data/IA/michaelmas.ics
 curl "$BASE_URL&term=L&course=IA" > $DIR/data/IA/lent.ics
