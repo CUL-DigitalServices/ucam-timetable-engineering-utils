@@ -68,7 +68,9 @@ from __future__ import unicode_literals
 import hashlib
 import itertools
 import json
+import os
 import re
+import sys
 
 from lxml import etree
 import docopt
@@ -332,8 +334,11 @@ def main():
 
     xml = build_timetable_xml(tripos_name, events)
 
-    print etree.tostring(xml, pretty_print=True)
-
+    # Write the XML's bytes to stdout
+    # We must write to stdout.buffer in Py3 but just stdout in Py2
+    out_file = getattr(sys.stdout, "buffer", sys.stdout)
+    xml.getroottree().write(out_file, encoding="UTF-8", xml_declaration=True,
+                            pretty_print=True)
 
 if __name__ == "__main__":
     main()
