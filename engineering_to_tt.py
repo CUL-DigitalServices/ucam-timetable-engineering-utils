@@ -154,14 +154,13 @@ class Substitutor(object):
 class Excludor(object):
     def __init__(self, exclusions):
         self.exclusions = exclusions
-        pass
 
-    def isExcluded(self, toCheck):
+    def is_excluded(self, event):
         for exclusion in self.exclusions:
-            if all([
-                getattr(toCheck, exclusion_key, None)
+            if all(
+                getattr(event, exclusion_key, None)
                     == exclusion[exclusion_key]
-                    for exclusion_key in exclusion]):
+                    for exclusion_key in exclusion):
                 return True
         return False
 
@@ -190,7 +189,7 @@ class NullExcludor(object):
     def __init__(self):
         pass
 
-    def isExcluded(self, event):
+    def is_excluded(self, event):
         return False
 
 
@@ -403,7 +402,7 @@ def main():
         event
         for filename in args["<ical_file>"]
         for event in parse_engineering_ical_file(filename, substitutor)
-        if not excludor.isExcluded(event)
+        if not excludor.is_excluded(event)
     )
 
     xml = build_timetable_xml(tripos_name, events)
