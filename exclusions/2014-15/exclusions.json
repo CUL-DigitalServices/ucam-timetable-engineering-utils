@@ -1,0 +1,151 @@
+{
+    "exclusions": [
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Computing briefing"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Drawing lecture"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Easter Drawing lecture"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Easter Examples (see rota)"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Easter Lab/Drawing (see rota)"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Examples (see rota)"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lab/Computing (see rota)"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lab/Drawing (see rota)"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lego Mindstorms"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lent Computing briefing"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lent Drawing lecture"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lent Examples (see rota)"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lent Lab/Computing (see rota)"
+        },
+        {
+            "part": "IA",
+            "paper": "Coursework",
+            "name": "Lent Lab/Drawing (see rota)"
+        },
+
+
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Computing briefing"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Easter Examples (see rota)"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Examples (see rota)"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "I1. Spectrum Analysis"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "IDP lecture"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "IDP: Project Management"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Integrated Coursework: intro lecture"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Integrated Coursework: presentations"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Lab/IDP (see rota)"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Lab/IDP/Computing (see rota)"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Lent Computing intro talk"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Lent Examples (see rota)"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Lent Lab (see rota)"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Lent Lab/Computing (see rota)"
+        },
+        {
+            "part": "IB",
+            "paper": "Coursework",
+            "name": "Lent Lab/IDP/Computing (see rota)"
+        }
+    ]
+}
