@@ -46,7 +46,7 @@ setup(
         "ipython>=2.1.0",
         "lxml>=3.3.5",
         "pytz>=2014.4",
-        # TODO: require ttapiutils
+        "ucam-timetable-api-utils>=0.0.1"
     ],
     license="BSD",
     classifiers=[
