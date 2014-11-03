@@ -107,7 +107,7 @@ from ttapiutils.utils import write_c14n_pretty
 from ttapiutils.autoimport import DataSourceParamsException
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __version_info__ = tuple(int(i) for i in __version__.split("."))
 
 
@@ -295,6 +295,20 @@ class EngineeringEvent(object):
             self.end,
             self.uid
         )
+
+    def _as_tuple(self):
+        """Get a tuple of the event's fields"""
+        return (
+            self.part, self.paper, self.name, self.event_type, self.staff_name,
+            self.location, self.start, self.end, self.uid
+        )
+
+    def __hash__(self):
+        return hash(self._as_tuple())
+
+    def __eq__(self, other):
+        return isinstance(other, EngineeringEvent) and (
+               self._as_tuple() == other._as_tuple())
 
     @staticmethod
     def from_ical_event(ical_event):
@@ -484,7 +498,7 @@ class FilesystemICalSource(object):
 
 def parse_events(ical_source, fetch_specs, substitutor=DEFAULT_SUBSTITUTOR,
                  excludor=DEFAULT_EXCLUDOR):
-    return (
+    return set(
         event
         for fetch_spec in fetch_specs
         for event in parse_engineering_ical_string(
